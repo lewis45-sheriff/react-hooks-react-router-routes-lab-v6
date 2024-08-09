@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from './MovieCard';
+import Movie from './Movie';
 
 function Home({ movies }) {
   return (
@@ -7,7 +7,7 @@ function Home({ movies }) {
       <h1>Home Page</h1>
       <div className="movie-list">
         {movies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
+          <Movie key={movie.id} movie={movie} />
         ))}
       </div>
     </div>

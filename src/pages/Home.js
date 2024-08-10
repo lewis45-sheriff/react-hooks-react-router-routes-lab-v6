@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from './Movie';
+import { Link } from 'react-router-dom';
 
 function Home({ movies }) {
   return (
@@ -7,7 +7,11 @@ function Home({ movies }) {
       <h1>Home Page</h1>
       <div className="movie-list">
         {movies.map(movie => (
-          <Movie key={movie.id} movie={movie} />
+          <div key={movie.id} className="movie-card">
+            <h2>{movie.title}</h2>
+            <p>Time: {movie.time} minutes</p>
+            <Link to={`/movie/${movie.id}`}>View Details</Link>
+          </div>
         ))}
       </div>
     </div>

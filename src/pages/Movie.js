@@ -1,25 +1,31 @@
-import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Navbar from "../components/NavBar";
 
-function Movie({ movies }) {
+function Movie() {
   const { id } = useParams();
-  const movie = movies.find(m => m.id === parseInt(id));
+  const [movie, setMovie] = useState(null);
 
-  if (!movie) {
-    return <Navigate to="/error" />;
-  }
-
+  useEffect(() => {
+    fetch(`http://localhost:4000/movies/${id}`)
+      .then((response) => response.json())
+      .then((data) => setMovie(data));
+  }, [id]);
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <p>Time: {movie.time} minutes</p>
-      <div>
-        <h3>Genres:</h3>
-        {movie.genres.map((genre, index) => (
-          <span key={index} className="genre">{genre}</span>
+    <>
+      <header>
+        {/* What component should go here? */}
+        <Navbar />
+      </header>
+      <main>
+        {/* Movie info here! */}
+        <h1>{movie?.title}</h1>
+        <p>{movie?.time}</p>
+        {movie?.genres?.map((genre, index) => (
+          <span key={index}>{genre}</span>
         ))}
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
 

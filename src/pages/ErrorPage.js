@@ -1,13 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import React from "react";
+import Navbar from "../components/NavBar";
 
 function ErrorPage() {
   return (
-    <div>
-      <h1>Oops! Looks like something went wrong.</h1>
-      <p>The page you're looking for doesn't exist or an error occurred.</p>
-      <Link to="/">Go back to Home</Link>
-    </div>
+    <>
+      <header>
+        {/* What component should go here? */}
+        <Navbar />
+      </header>
+      <main>
+        <h1>Oops! Looks like something went wrong.</h1>
+      </main>
+    </>
   );
 }
 
